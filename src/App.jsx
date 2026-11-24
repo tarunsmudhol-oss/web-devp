@@ -149,20 +149,7 @@ function App() {
       {toastMessage && (
         <div
           id="toast"
-          style={{
-            position: 'fixed',
-            bottom: '30px',
-            right: '30px',
-            background: '#092c5c',
-            color: 'white',
-            padding: '14px 24px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-            zIndex: 9999,
-            fontWeight: 'bold',
-            borderLeft: '5px solid #ffcc00',
-            animation: 'fadeIn 0.3s ease',
-          }}
+          className="toast"
         >
           {toastMessage}
         </div>
@@ -198,27 +185,16 @@ function App() {
         <section className="schedule" id="matches">
           <h2>IPL Match Schedule</h2>
 
-          <div
-            className="match-controls"
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '15px',
-              marginBottom: '20px',
-            }}
-          >
+          <div className="match-controls">
             {/* Team Filter (State Controlled) */}
-            <div className="filter" style={{ margin: 0 }}>
-              <label htmlFor="team-filter" style={{ marginRight: '8px', display: 'inline-block' }}>
+            <div className="filter">
+              <label htmlFor="team-filter">
                 Filter By Team:
               </label>
               <select
                 id="team-filter"
                 value={selectedTeam}
                 onChange={(e) => setSelectedTeam(e.target.value)}
-                style={{ padding: '8px 12px', minWidth: '160px', display: 'inline-block', width: 'auto' }}
               >
                 <option value="all">All Teams</option>
                 <option value="CSK">CSK</option>
@@ -230,32 +206,18 @@ function App() {
             </div>
 
             {/* View Mode Controls (State Controlled) */}
-            <div className="view-controls" style={{ display: 'flex', gap: '8px' }}>
+            <div className="view-controls">
               <button
                 type="button"
-                className={`btn ${viewMode === 'grid' ? 'active' : ''}`}
+                className={`view-button ${viewMode === 'grid' ? 'active' : ''}`}
                 onClick={() => setViewMode('grid')}
-                style={{
-                  margin: 0,
-                  padding: '8px 16px',
-                  background: viewMode === 'grid' ? '#092c5c' : '#e0e0e0',
-                  color: viewMode === 'grid' ? 'white' : '#333',
-                  cursor: 'pointer',
-                }}
               >
                 Grid View
               </button>
               <button
                 type="button"
-                className={`btn ${viewMode === 'list' ? 'active' : ''}`}
+                className={`view-button ${viewMode === 'list' ? 'active' : ''}`}
                 onClick={() => setViewMode('list')}
-                style={{
-                  margin: 0,
-                  padding: '8px 16px',
-                  background: viewMode === 'list' ? '#092c5c' : '#e0e0e0',
-                  color: viewMode === 'list' ? 'white' : '#333',
-                  cursor: 'pointer',
-                }}
               >
                 List View
               </button>
@@ -269,7 +231,7 @@ function App() {
                 <MatchCard key={match.id} match={match} onBook={handleBookMatch} />
               ))
             ) : (
-              <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '30px' }}>
+              <p className="no-matches">
                 No matches found for the selected team filter.
               </p>
             )}
@@ -281,13 +243,13 @@ function App() {
           <h2>My Ticket Bookings</h2>
 
           {isLoadingBookings ? (
-            <div style={{ textAlign: 'center', padding: '30px 20px', color: '#666' }}>
+            <div className="empty-bookings">
               Loading bookings...
             </div>
           ) : bookings.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '30px 20px', color: '#666' }}>
-              <p style={{ fontSize: '18px' }}>No bookings yet.</p>
-              <p style={{ fontSize: '14px', marginTop: '6px' }}>
+            <div className="empty-bookings">
+              <p className="empty-title">No bookings yet.</p>
+              <p>
                 Select a match above and click <strong>Book Ticket</strong> to create your first booking!
               </p>
             </div>
@@ -316,13 +278,13 @@ function App() {
                         <strong>📍 {b.venue}</strong>
                       </td>
                       <td>
-                        <span style={{ background: '#ffcc00', padding: '3px 8px', borderRadius: '4px', fontWeight: 'bold' }}>
+                        <span className="stand-badge">
                           {b.stand}
                         </span>
                       </td>
                       <td>{b.tickets}</td>
                       <td>
-                        <strong style={{ color: '#092c5c' }}>₹{b.total}</strong>
+                        <strong className="amount">₹{b.total}</strong>
                       </td>
                       <td>{b.booked_at ? new Date(b.booked_at).toLocaleTimeString() : '—'}</td>
                     </tr>

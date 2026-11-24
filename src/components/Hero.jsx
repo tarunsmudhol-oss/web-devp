@@ -12,25 +12,26 @@ function Hero({ onExploreClick }) {
 
   return (
     <section className="hero" id="home">
-      <h2>Welcome to IPL 2026</h2>
-      <p>Experience The Stadium Energy Live!</p>
-      <div>
+      <div className="hero-copy">
+        <span className="hero-kicker">IPL 2026 · Match Week</span>
+        <h2>Feel the stadium. Own the moment.</h2>
+        <p>Discover the biggest fixtures and secure your seat for every unforgettable over.</p>
+        <div className="hero-actions">
         <button
           type="button"
           className="btn"
           onClick={handleScrollToMatches}
-          style={{ cursor: 'pointer' }}
         >
-          View Schedule
+          Explore matches
         </button>
         <button
           type="button"
-          className="btn"
+          className="btn btn-secondary"
           onClick={handleScrollToMatches}
-          style={{ cursor: 'pointer' }}
         >
-          Book Ticket
+          Book a ticket
         </button>
+        </div>
       </div>
     </section>
   );

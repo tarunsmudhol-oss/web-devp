@@ -26,82 +26,46 @@ function MatchCard({ match, onBook }) {
 
   return (
     <article className="match-card">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 'bold', background: '#092c5c', color: 'white', padding: '3px 8px', borderRadius: '4px' }}>
+      <div className="match-card-header">
+        <span className="match-number">
           Match #{id}
         </span>
-        <span style={{ fontSize: '13px', color: '#666', fontWeight: 'bold' }}>
+        <span className="match-date">
           📅 {date} {time && `• ${time}`}
         </span>
       </div>
 
-      <h3 style={{ fontSize: '20px', margin: '8px 0 4px', color: '#092c5c' }}>{name}</h3>
+      <h3>{name}</h3>
 
-      {/* Prominent Match Location & Venue */}
-      <div
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '6px',
-          background: '#e8f0fe',
-          color: '#123f78',
-          border: '1px solid #c2d7fa',
-          padding: '6px 12px',
-          borderRadius: '6px',
-          margin: '8px 0 12px',
-          fontSize: '13.5px',
-          fontWeight: 'bold',
-          width: '100%',
-        }}
-      >
+      <div className="match-location">
         <span>📍</span>
         <span>
-          <strong>Location:</strong> {venue}
+          {venue}
         </span>
       </div>
 
-      {/* Stand Selection */}
-      <div style={{ margin: '15px 0' }}>
-        <label htmlFor={`stand-${id}`} style={{ fontSize: '14px', marginBottom: '6px' }}>
-          Select Category:
-        </label>
-        <div style={{ display: 'flex', gap: '8px', marginTop: '6px', flexWrap: 'wrap' }}>
+      <div className="stand-label">Select category</div>
+      <div className="stand-options">
           {Object.entries(prices).map(([stand, price]) => (
             <button
               key={stand}
               type="button"
+              className={`stand-button ${selectedStand === stand ? 'selected' : ''}`}
               onClick={() => setSelectedStand(stand)}
-              style={{
-                flex: '1',
-                minWidth: '80px',
-                padding: '8px 6px',
-                border: selectedStand === stand ? '2px solid #092c5c' : '1px solid #ccc',
-                background: selectedStand === stand ? '#eef4fc' : 'white',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                textAlign: 'center',
-                fontWeight: selectedStand === stand ? 'bold' : 'normal',
-                color: selectedStand === stand ? '#092c5c' : '#333',
-              }}
             >
-              <div>{stand}</div>
-              <div style={{ fontSize: '13px', color: '#e63946', fontWeight: 'bold' }}>₹{price}</div>
+              <strong>{stand}</strong>
+              <span>₹{price}</span>
             </button>
           ))}
-        </div>
       </div>
 
-      {/* Ticket quantity & Total */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '15px 0', gap: '10px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <label htmlFor={`tickets-${id}`} style={{ fontSize: '14px', margin: 0 }}>
-            Qty:
-          </label>
+      <div className="ticket-row">
+        <div className="ticket-qty">
+          <label htmlFor={`tickets-${id}`}>Qty:</label>
           <select
             id={`tickets-${id}`}
             value={ticketCount}
             onChange={(e) => setTicketCount(Number(e.target.value))}
-            style={{ width: '65px', padding: '6px' }}
           >
             {[1, 2, 3, 4, 5, 6, 8, 10].map((num) => (
               <option key={num} value={num}>
@@ -110,25 +74,16 @@ function MatchCard({ match, onBook }) {
             ))}
           </select>
         </div>
-
-        <div style={{ textAlign: 'right' }}>
-          <span style={{ fontSize: '13px', color: '#777' }}>Total: </span>
-          <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#092c5c' }}>
-            ₹{totalPrice}
-          </span>
+        <div className="ticket-total">
+          <span>Total</span>
+          <strong>₹{totalPrice}</strong>
         </div>
       </div>
 
-      {/* Action Button */}
       <button
         type="button"
         className="book-btn"
         onClick={handleBooking}
-        style={{
-          width: '100%',
-          backgroundColor: '#092c5c',
-          transition: 'background-color 0.3s ease',
-        }}
       >
         {`Book Ticket • ₹${totalPrice}`}
       </button>

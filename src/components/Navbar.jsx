@@ -13,7 +13,7 @@ function Navbar({ bookingCount = 0 }) {
 
   return (
     <nav className="navbar" aria-label="Main navigation">
-      <div className="logo" style={{ cursor: 'pointer' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         🏏 IPL 2026
       </div>
 
@@ -36,7 +36,7 @@ function Navbar({ bookingCount = 0 }) {
         </li>
         <li>
           <a href="#mybookings" onClick={closeMenu}>
-            My Bookings {bookingCount > 0 && <span style={{ background: '#ffcc00', color: '#092c5c', borderRadius: '12px', padding: '2px 8px', fontSize: '12px', marginLeft: '5px' }}>{bookingCount}</span>}
+            My Bookings {bookingCount > 0 && <span className="booking-count">{bookingCount}</span>}
           </a>
         </li>
         <li>
