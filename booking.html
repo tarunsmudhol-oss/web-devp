@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>IPL Ticket Booking 2026</h1>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#matches">Matches</a></li>
+            <li><a href="booking.html">Book Ticket</a></li>
+            <li><a href="index.html#mybookings">My Bookings</a></li>
+            <li><a href="index.html#guidelines">Guidelines</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+            <h2>Book Your IPL 2026 Tickets</h2>
+            <p>Experience The Stadium Energy Live!</p>
+            <a href="index.html#matches" class="btn">View Matches</a>
+        </section>
+
+        <div class="booking-container">
+
+            <section class="booking-form">
+
+                <h2>Ticket Booking Form</h2>
+
+                <form id="bookingForm" action="#" method="get">
+
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            minlength="3"
+                            maxlength="50"
+                            pattern="[A-Za-z ]{3,50}"
+                            title="Enter a name containing 3 to 50 letters."
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            maxlength="100"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter 10-digit phone number"
+                            pattern="[0-9]{10}"
+                            minlength="10"
+                            maxlength="10"
+                            title="Enter exactly 10 digits."
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="match">Select Match:</label>
+                        <select id="match" name="match" required>
+                            <option value="">Select Match</option>
+                            <option value="01">CSK vs MI - Chennai</option>
+                            <option value="02">RCB vs MI - Bengaluru</option>
+                            <option value="03">DC vs CSK - Delhi</option>
+                            <option value="04">RR vs RCB - Jaipur</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stand">Stand Category:</label>
+                        <select id="stand" name="stand" required>
+                            <option value="">Select Stand Category</option>
+                            <option value="General">General</option>
+                            <option value="Premium">Premium</option>
+                            <option value="VIP">VIP</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tickets">Number of Tickets:</label>
+                        <input
+                            type="number"
+                            id="tickets"
+                            name="tickets"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="1"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Booking Preference:</label>
+
+                        <input
+                            type="radio"
+                            id="regular"
+                            name="preference"
+                            value="Regular"
+                            required>
+
+                        <label for="regular">Regular Booking</label>
+
+                        <input
+                            type="radio"
+                            id="priority"
+                            name="preference"
+                            value="Priority">
+
+                        <label for="priority">Priority Booking</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                            required>
+
+                        <label for="terms">
+                            I agree to the booking terms and conditions.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Confirm Booking
+                    </button>
+
+                    <button type="reset" class="reset-btn">
+                        Reset Form
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!-- Live Booking Summary -->
+            <aside class="summary" aria-live="polite">
+
+                <h2>Booking Summary</h2>
+
+                <p>Selected Match:
+                    <strong id="summaryMatch">Not Selected</strong>
+                </p>
+
+                <p>Match Date:
+                    <strong id="summaryDate">—</strong>
+                </p>
+
+                <p>Venue:
+                    <strong id="summaryVenue">—</strong>
+                </p>
+
+                <p>Stand Category:
+                    <strong id="summaryStand">Not Selected</strong>
+                </p>
+
+                <p>Price per Ticket:
+                    ₹<strong id="summaryPrice">—</strong>
+                </p>
+
+                <p>Ticket Quantity:
+                    <strong id="summaryQuantity">1</strong>
+                </p>
+
+                <hr>
+
+                <h3>Total Amount:
+                    ₹<strong id="summaryTotal">—</strong>
+                </h3>
+
+                <p>Booking Status:
+                    <strong>Pending Submission</strong>
+                </p>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 IPL Ticket Booking. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
